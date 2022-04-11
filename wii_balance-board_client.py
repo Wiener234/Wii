@@ -3,7 +3,6 @@ import pyautogui
 import pickle
 import subprocess
 
-pyautogui.FAILSAFE = False
 
 x = 0
 
