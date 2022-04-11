@@ -40,7 +40,7 @@ while not bal:
 sleep(5)
 print('Ready set go...')
 
-bal.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC | cwiid.RPT_BALANCE | cwiid.RPT_NUNCHUK
+bal.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_BALANCE
 
 while True:
     buttons = bal.state['buttons']
