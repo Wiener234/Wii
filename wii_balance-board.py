@@ -50,6 +50,7 @@ while True:
     if buttons == 8:
         c.send('exit'.encode())
         s.close()
+        print('Exiting...')
         sleep(1)
         exit()
     
