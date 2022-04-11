@@ -15,7 +15,7 @@ while True:
         rec = pickle.loads(rec)
     except:
         print('pickel Error')
-        break
+        continue
     if rec['exit'] == 1:
         s.close()
         print('Exiting...')
