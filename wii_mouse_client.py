@@ -11,10 +11,18 @@ s.connect((host, port))
 
 while True:
     rec = s.recv(1024)
-    rec = pickle.loads(rec)
+    try:
+        rec = pickle.loads(rec)
+    except:
+        print('pickel Error')
+        break
     if rec['exit'] == 1:
         s.close()
         print('Exiting...')
         exit()
+
+    if rec['b'] == 1:
+        pyautogui.click()
+
 
     pyautogui.moveTo(rec['x'], rec['y'])
