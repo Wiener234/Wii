@@ -72,9 +72,8 @@ while True:
         y = (y1+y2)
 
         xy = {'x': x, 'y': y, 'exit': 0}
-        strx = pickle.dumps(xy)
 
-        c.send(strx)
+        c.send(pickle.dumps(xy))
 
         #print(xy)
 
