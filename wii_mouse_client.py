@@ -6,7 +6,7 @@ pyautogui.FAILSAFE = False
 
 s = socket.socket()         # Create a socket object
 host = '192.168.2.122'        # Get local machine name
-port = 12345          # Reserve a port for your service.
+port = 12345        # Reserve a port for your service.
 s.connect((host, port))
 
 while True:
@@ -16,13 +16,15 @@ while True:
     except:
         print('pickel Error')
         continue
-    if rec['exit'] == 1:
+
+    print(rec['e'])
+    if rec['e'] == 1:
+        s.send('exit'.encode())
         s.close()
         print('Exiting...')
         exit()
 
     if rec['b'] == 1:
         pyautogui.click()
-
 
     pyautogui.moveTo(rec['x'], rec['y'])
