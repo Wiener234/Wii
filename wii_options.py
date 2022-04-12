@@ -10,7 +10,7 @@ btn_left = 256
 btn_b = 4
 btn_a = 8
 
-btn_plus = 4069
+btn_plus = 4096
 btn_minus = 16
 btn_home = 128
 

@@ -16,7 +16,7 @@ s.listen(5)
 c, addr = s.accept()
 print("Got connection from", addr)
 
-
+rec = None
 
 #connecting to the Wiimote. This allows several attempts 
 # as first few often fail. 
@@ -41,16 +41,26 @@ wm.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC | cwiid.RPT_IR
 #turn on led to show connected 
 wm.led = 1
 
-xy = {'x': 0, 'y': 0, 'exit': 0, 'b': 0}
+xy = {'x': 0, 'y': 0, 'e': 0, 'b': 0}
 
 while True:
+
+    if xy['e'] ==1:
+      rec = c.recv(1024)
+      rec = rec.decode()
+
+    if rec == str('exit'):
+      print('Exiting...')
+      s.close()
+      time.sleep(2)
+      exit()
+
+
     button = wm.state['buttons']
     if button == 3:
-        xy['exit'] = 1
+        xy['e'] = 1
         c.send(pickle.dumps(xy))
-        s.close()
-        exit(wm)
-        quit()
+        time.sleep(2)
     
     time.sleep(0.03)
 
@@ -60,6 +70,7 @@ while True:
     else:
       xy['b'] = 0
       c.send(pickle.dumps(xy))
+
 
     #error when pos none
     if wm.state['ir_src'][0] != None and wm.state['ir_src'][1] != None:
