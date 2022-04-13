@@ -42,6 +42,8 @@ print('Ready set go...')
 
 bal.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_BALANCE
 
+bal.led = 1
+
 while True:
     buttons = bal.state['buttons']
     
